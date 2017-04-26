@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if is_registered %}
+<script>alert("You are successfully registered with Username:{{user_obj.username }} and Email: {{ user_obj.email }}")</script>
+    {% else %}
+    <form method="post" action="{% url 'register' %}">
+	{% csrf_token %}
+	<div>
+	<td>{{ form.username.label_tag }}</td>
+	<td>{{ form.username }}</td>
+	</div>
+	<div>
+	<td>{{ form.email.label_tag }}</td>
+	<td>{{ form.email }}</td>
+	</div>
+	<div>
+	<td>{{ form.password.label_tag }}</td>
+	<td>{{ form.password }}</td>
+	</div>
+	<div>
+	<td>{{form.gender.label_tag }}</td>
+	<td>{{form.gender }}</td>
+	</div>
+	<div>
+	<input type="submit" value="Register" />
+	</div>
+    </form>
+	{% endif %}
+{% endblock %}

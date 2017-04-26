@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% if is_reported %}
+<script>alert("You are successfully reported a case.")</script>
+    {% else %}
+    <form method="post" action="{% url 'report' %}">
+	{% csrf_token %}
+	<div>
+	<td>{{ form.case_vector.label_tag }}</td>
+	<td>{{ form.case_vector }}</td>
+	</div>
+    <div>
+	<td>{{ form.case_vec_num.label_tag }}</td>
+	<td>{{ form.case_vec_num }}</td>
+	</div>
+	<div>
+    <input type="submit" value="Report" />
+	</div>
+    </form>
+	{% endif %}
+{% endblock %}
